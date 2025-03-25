@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled & Wild - Services</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .styled-image {
+            width: 100%;
+            max-width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 3px solid #ccc;
+            border-radius: 10px;
+            padding: 8px;
+            background-color: #fff;
+        }
+        .hidden { display: none; }
+        .blog-title {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color:#333;
+        }
+        .separator {
+    width: 100vw; 
+    height: 1px;
+    background-color: #333;
+    margin: 8px 0; 
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 200px; 
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.nav-links ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 70px; 
+}
+
+
+        .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 0 50px; 
+    display: inline-block;
+}
+        
+    </style>
+</head>
+<body>
+<header>
+    <div class="text-center mt-4">
+        <div class="blog-title">Service</div>
+        <div class="separator"></div>
+        <nav class="nav-links d-flex justify-content-center">
+            <ul class="navbar-nav d-flex flex-row gap-3">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="separator"></div>
+    </div>
+</head>
+<body>
+    <style>
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .form-section {
+            padding: 20px;
+        }
+        .form-control, .btn {
+            border-radius: 8px;
+        }
+        .btn {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            font-weight: bold;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover {
+            background-color: #333;
+        }
+        .outfit-card {
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .outfit-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .outfit-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-6 form-section">
+            <h2 class="mb-4">Find Your Perfect Outfit</h2>
+            <form onsubmit="generateOutfits(); return false;">
+                <label class="form-label">Select Gender:</label>
+                <select id="gender" class="form-control">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <label class="form-label mt-3">Weather:</label>
+                <select id="weather" class="form-control">
+                    <option value="sunny">Sunny</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="cold">Cold</option>
+                </select>
+
+                <label class="form-label mt-3">Occasion:</label>
+                <select id="occasion" class="form-control">
+                    <option value="casual">Casual</option>
+                    <option value="formal">Formal</option>
+                    <option value="sporty">Sporty</option>
+                </select>
+
+                <button type="submit" class="btn mt-4 w-100">Generate Outfit</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="mb-4">Recommended Outfits</h3>
+            <div class="row" id="outfitResults">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const outfits = {
+        male: {
+            sunny: { casual: "sunny1.jpg", formal: "sunny4.jpg", sporty: "sunny5.png" },
+            rainy: { casual: "sunny6.jpg", formal: "rainy2.png", sporty: "rainy3.jpg" },
+            cold: { casual: "cold1.jpg", formal: "cold2.jpg", sporty: "cold3.jpg" }
+        },
+        female: {
+            sunny: { casual: "ssunny1.png", formal: "sssunny2.jpg", sporty: "sssunny3.jpg" },
+            rainy: { casual: "rrainy1.png", formal: "rrainy2.png", sporty: "rrainy3.jpg" },
+            cold: { casual: "ccold2.jpg", formal: "ccold1.jpg", sporty: "ccold3.jpg" }
+        }
+    };
+
+    function generateOutfits() {
+        let gender = document.getElementById("gender").value.toLowerCase();
+        let weather = document.getElementById("weather").value.toLowerCase();
+        let occasion = document.getElementById("occasion").value.toLowerCase();
+
+        let outfitImage1 = outfits[gender]?.[weather]?.[occasion] || "default.jpg";
+        let outfitImage2 = outfits[gender]?.[weather]?.casual || "default.jpg"; 
+
+    
+        document.getElementById("outfitResults").innerHTML = `
+            <div class="col-md-6">
+                <div class="outfit-card">
+                    <img src="${outfitImage1}" alt="Outfit 1">
+                    <p class="text-center mt-2">Outfit 1</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="outfit-card">
+                    <img src="${outfitImage2}" alt="Outfit 2">
+                    <p class="text-center mt-2">Outfit 2</p>
+                </div>
+            </div>
+        `;
+    }
+</script>
+
+<footer class="bg-dark text-white py-4 mt-5">
+    
+      <div class="row">
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>We are dedicated to providing high-quality services with a focus on innovation, customer satisfaction, and excellence.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="nav-item"><a class="nav-link custom-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link custom-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link custom-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link custom-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-center">
+          <h5>Follow Us</h5>
+          <a href="#" class="text-white custom-link me-2">Facebook</a>
+          <a href="#" class="text-white custom-link me-2">Twitter</a>
+          <a href="#" class="text-white custom-link">Instagram</a>
+        </div>
+      </div>
+      <hr>
+      <p class="text-center">&copy; 2025 Styled & Wild. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<style>
+    .custom-link {
+      text-decoration: none;
+      font-size: 14px; 
+      transition: text-decoration 0.3s ease-in-out;
+    }
+  
+    .custom-link:hover {
+      text-decoration: underline;
+    }
+  
+    .footer-text {
+      font-size: 14px;
+      margin-bottom: 10px; 
+    }
+  
+    .small-text {
+      font-size: 18px; 
+    }
+  
+    footer {
+      padding: 13px 0; 
+    }
+  </style>
+
+  
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
